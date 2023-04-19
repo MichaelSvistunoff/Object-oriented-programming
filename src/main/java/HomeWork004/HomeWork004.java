@@ -50,11 +50,11 @@ public class HomeWork004 {
 }
 
 abstract class Priority {
-    private Integer id;
-    private String name;
-    private LocalDate deadLine;
-    private LocalDate createdOn;
-    private String author;
+    private final Integer id;
+    private final String name;
+    private final LocalDate deadLine;
+    private final LocalDate createdOn;
+    private final String author;
 
     public Priority() {
         Random r = new Random();
@@ -88,10 +88,10 @@ abstract class Priority {
 
     public String toStringForXml() {
         return "\t<priority id=\"" + id + '\"' + ">" +
-                    "\n\t\t<name>" + name + "</name>" +
-                    "\n\t\t<createdon>" + createdOn + "</createdon>" +
-                    "\n\t\t<deadline>" + deadLine + "</deadline>" +
-                    "\n\t\t<author>" + author + "</author>" + '\n' +
+                "\n\t\t<name>" + name + "</name>" +
+                "\n\t\t<createdon>" + createdOn + "</createdon>" +
+                "\n\t\t<deadline>" + deadLine + "</deadline>" +
+                "\n\t\t<author>" + author + "</author>" + '\n' +
                 "\t</priority>";
     }
 }
@@ -115,8 +115,8 @@ class LowPriority extends Priority {
 }
 
 class ToDoList<T extends Priority> {
-    private String name;
-    private List<T> priorities;
+    private final String name;
+    private final List<T> priorities;
 
     public ToDoList(String name) {
         this.name = name;
@@ -148,11 +148,11 @@ class ToDoList<T extends Priority> {
             sb.append(priority.toString()
                     .replace(" ", ",")
                     .replace("[", "")
-                    .replace("]", "")+ "\n");
+                    .replace("]", "")).append(",").append("\n");
         }
         try (FileWriter writer = new FileWriter("src/main/java/HomeWork004/SavedFiles/" +
                 fileName + ".csv", false)) {
-            writer.write("id, priority_name, created_date,deadline,author,priority" + "\n");
+            writer.write("id, priority_name, created_date,deadline,author,priority," + "\n");
             writer.write(String.valueOf(sb));
             writer.flush();
         } catch (IOException ex) {
