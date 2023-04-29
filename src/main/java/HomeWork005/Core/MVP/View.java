@@ -5,4 +5,8 @@ public interface View {
     void setModel(String model);
     String getBrand();
     void setBrand(String brand);
+
+    void set(String toString);
+
+    String get();
 }

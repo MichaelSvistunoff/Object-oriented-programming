@@ -1,6 +1,5 @@
 package HomeWork005.Core.MVP;
 import HomeWork005.Core.Model.Car;
-import Lecture005.Ex002Phonebook.Core.Models.Contact;
 
 public class Presenter {
     private Model model;
@@ -11,7 +10,7 @@ public class Presenter {
         model = new Model(db);
     }
 
-    public void loadFromFile() {
+    public void LoadFromFile() {
         model.load();
 
         if (model.currentAutopark().count() > 0) {
